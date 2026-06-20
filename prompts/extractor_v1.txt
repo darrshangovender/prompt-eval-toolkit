@@ -1,0 +1,5 @@
+Extract the invoice number from the text below.
+
+Text: {{ text }}
+
+Respond with the invoice number only, no other text.
