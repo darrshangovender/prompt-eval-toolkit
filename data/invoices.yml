@@ -1,0 +1,17 @@
+# Tiny demo dataset. Real users replace this with their domain data.
+
+- variables:
+    text: "Invoice 12345 dated 2025-01-15"
+  expected: "12345"
+
+- variables:
+    text: "Inv. No: AB-9876, Total: R12,000"
+  expected: "AB-9876"
+
+- variables:
+    text: "Reference 88812 — Invoice 7733"
+  expected: "7733"
+
+- variables:
+    text: "Statement of account, no invoice number on this page."
+  expected: "NONE"
