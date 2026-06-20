@@ -1,0 +1,21 @@
+[project]
+name = "prompt-eval-toolkit"
+version = "0.1.0"
+description = "A/B test your prompts before merging them."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Darrshan Govender", email = "darrshangovender@gmail.com" }]
+dependencies = [
+    "anthropic>=0.40.0",
+    "openai>=1.50.0",
+    "pyyaml>=6.0",
+    "rich>=13.7",
+]
+
+[project.scripts]
+prompt-eval = "prompt_eval.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
