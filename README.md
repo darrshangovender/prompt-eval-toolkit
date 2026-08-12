@@ -1,17 +1,8 @@
-<div align="center">
+# prompt-eval-toolkit — A/B test your prompts before merging them
 
-# prompt-eval-toolkit — A/B test prompts before merging
-
+[![tests](https://github.com/darrshangovender/prompt-eval-toolkit/actions/workflows/tests.yml/badge.svg)](https://github.com/darrshangovender/prompt-eval-toolkit/actions/workflows/tests.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](https://python.org)
-[![CLI](https://img.shields.io/badge/Interface-CLI-555)](#)
-[![Anthropic](https://img.shields.io/badge/Anthropic-Claude-CC785C)](https://anthropic.com)
-[![Status](https://img.shields.io/badge/Status-Working%20code-blue)](#)
-[![Statistics](https://img.shields.io/badge/Stats-Paired%20bootstrap-059669)](#why-paired-bootstrap-and-not-a-paired-t-test)
-
-</div>
-
----
 
 > A tiny CLI that runs two versions of a prompt against the same dataset and tells you which one wins, on which metrics, with what confidence.
 
