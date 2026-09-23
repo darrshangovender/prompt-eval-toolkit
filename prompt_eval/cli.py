@@ -61,7 +61,7 @@ def _compare(args) -> int:
     console.print(f"Δ            {sign}{result.delta:.3f}  ({sign}{result.relative_pct:.1f}% relative)")
     console.print(f"p-value      {result.p_value:.3f}  (95% CI: {result.ci_low:+.3f}..{result.ci_high:+.3f})\n")
 
-    if result.p_value > 0.05:
+    if not result.significant:
         console.print("[yellow]VERDICT: Inconclusive — collect more examples.[/yellow]")
         return 2
     if result.delta > 0:
