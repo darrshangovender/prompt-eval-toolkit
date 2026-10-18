@@ -53,7 +53,10 @@ class TestSignificance:
     def test_unanimous_improvement_is_significant(self) -> None:
         scores_n = 20
         result = compare([0.0] * scores_n, [1.0] * scores_n)
-        assert result.p_value == 0.0
+        # Was `== 0.0`, which is not a valid p-value (a finite sample can never prove the null
+        # impossible). The exact sign-flip value for 20 unanimous pairs is 2 * 2**-20.
+        assert result.p_value == pytest.approx(2.0**-19)
+        assert result.significant
         assert result.ci_low == 1.0 and result.ci_high == 1.0
 
     def test_tiny_noisy_sample_is_not_significant(self) -> None:

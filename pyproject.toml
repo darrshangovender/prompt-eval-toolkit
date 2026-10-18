@@ -1,28 +1,44 @@
 [project]
 name = "prompt-eval-toolkit"
 version = "0.1.0"
-description = "A/B test your prompts before merging them."
+description = "A/B test a prompt change before merging it: a paired-bootstrap significance test with an exact sign-test floor, a CI-friendly exit code, and a bundled offline example."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "Darrshan Govender", email = "darrshangovender@gmail.com" }]
-keywords = ["llm", "prompts", "evaluation", "ab-test", "llm-judge", "regression-testing"]
+keywords = ["llm", "prompts", "evaluation", "ab-test", "bootstrap", "statistics", "regression-testing"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Testing",
+]
+# The statistics are standard library only. Comparing recorded outputs needs no model SDK and no key.
 dependencies = [
-    "anthropic>=0.40.0",
-    "openai>=1.50.0",
     "pyyaml>=6.0",
     "rich>=13.7",
 ]
 
 [project.optional-dependencies]
+# Live-model paths. Not needed by the tests, the example or the benchmark.
+anthropic = ["anthropic>=0.40.0"]
+openai = ["openai>=1.50.0"]
+# scipy/numpy are used only to check the statistics against an independent implementation.
 dev = [
     "pytest>=8.0",
     "pytest-cov>=4.1",
     "ruff>=0.6",
+    "scipy>=1.11",
+    "numpy>=1.26",
+    "hypothesis>=6.100",
 ]
 
 [project.urls]
 Homepage = "https://github.com/darrshangovender/prompt-eval-toolkit"
+Repository = "https://github.com/darrshangovender/prompt-eval-toolkit"
 Issues = "https://github.com/darrshangovender/prompt-eval-toolkit/issues"
 
 [project.scripts]
@@ -47,3 +63,10 @@ pythonpath = ["."]
 [tool.ruff]
 line-length = 100
 target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E501"]        # long parametrised cases read better unwrapped
+"benchmarks/*" = ["E501"]

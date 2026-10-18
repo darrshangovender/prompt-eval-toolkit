@@ -1,3 +1,6 @@
+from ._text import normalise
+
+
 def exact_match(output: str, expected: str) -> float:
-    """1.0 if output (trimmed, lowered) equals expected; else 0.0."""
-    return 1.0 if output.strip().lower() == expected.strip().lower() else 0.0
+    """1.0 if output equals expected after trimming, Unicode NFC normalisation and case-folding."""
+    return 1.0 if normalise(output) == normalise(expected) else 0.0
